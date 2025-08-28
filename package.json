@@ -4,11 +4,17 @@
   "type": "module",
   "main": "src/index.js",
   "scripts": {
+    "prestart": "prisma migrate deploy",
     "start": "node src/index.js",
     "dev": "node src/index.js"
   },
   "dependencies": {
+    "@prisma/client": "^6.15.0",
     "cors": "^2.8.5",
     "express": "^4.19.2"
+  },
+  "devDependencies": {
+    "prisma": "^6.15.0"
   }
+  
 }

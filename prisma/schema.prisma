@@ -1,0 +1,34 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+// prisma/schema.prisma
+generator client {
+  provider = "prisma-client-js"   // use default output (no custom path)
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum ItemType {
+  EVENT      // calendar
+  IDEA       // idea board
+  WORKOUT    // workout tracker
+  CALORIE    // calorie log
+  NOTE       // misc
+}
+
+model Item {
+  id        String   @id @default(cuid())
+  type      ItemType
+  title     String
+  data      Json     // flexible payload per type
+  tags      String[] // e.g. ["bike","school","code"]
+  when      DateTime?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
