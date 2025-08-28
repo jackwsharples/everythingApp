@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Life Board</title>
+  <link rel="stylesheet" href="/app.css" />
+</head>
+<body>
+  <header class="bar">
+    <strong>Life Board</strong>
+    <select id="view">
+      <option value="">All</option>
+      <option value="EVENT">Calendar</option>
+      <option value="IDEA">Ideas</option>
+      <option value="WORKOUT">Workouts</option>
+      <option value="CALORIE">Calories</option>
+    </select>
+    <input id="tag" placeholder="tag: bike/school/code" />
+    <input id="q" placeholder="search…" />
+    <button id="new">New</button>
+    <div class="spacer"></div>
+  </header>
+
+  <main id="grid" class="grid"></main>
+
+  <section id="modal" class="card" hidden>
+    <select id="type">
+      <option>EVENT</option><option>IDEA</option>
+      <option>WORKOUT</option><option>CALORIE</option>
+    </select>
+    <input id="title" placeholder="Title" />
+    <textarea id="data" placeholder='JSON data (optional)'></textarea>
+    <input id="tags" placeholder="tags: bike,school" />
+    <input id="when" type="datetime-local" />
+    <button id="save">Save</button>
+    <button id="cancel" class="ghost">Cancel</button>
+  </section>
+
+  <script src="/app.js"></script>
+</body>
+</html>
