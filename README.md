@@ -16,7 +16,7 @@ day and week todo list, check off things store main ideas for the day
 
 Enter exercises with sets, reps, and weight
 
-Save data to your database (per user)
+Save data to your database (per user) d
 
 **Body Weight Tracking**
 
