@@ -76,15 +76,16 @@ app.post("/api/items", requireAdmin, async (req, res) => {
 app.patch("/api/items/:id", requireAdmin, async (req, res) => {
   const { id } = req.params;
   const { type, title, data = {}, tags = [], when } = req.body;
-  const created = await prisma.item.create({
-  data: {
-    type,
-    title,
-    data,
-    tags,
-    when: when ? new Date(when) : null       // key change
-  }
-});
+  const updated = await prisma.item.update({
+    where: { id },
+    data: {
+      type,
+      title,
+      data,
+      tags,
+      when: when ? new Date(when) : null
+    }
+  });
 
   res.json(updated);
 });
