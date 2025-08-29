@@ -76,3 +76,26 @@ app.post("/api/items", requireAdmin, async (req, res) => {
 app.patch("/api/items/:id", requireAdmin, async (req, res) => {
   const { id } = req.params;
   const { type, title, data = {}, tags = [], when } = req.body;
+
+  const updated = await prisma.item.update({
+    where: { id },
+    data: {
+      type,
+      title,
+      data,
+      tags,
+      when: when === undefined ? undefined : when ? new Date(when) : null
+    }
+  });
+
+  res.json(updated);
+});
+
+app.delete("/api/items/:id", requireAdmin, async (req, res) => {
+  await prisma.item.delete({ where: { id: req.params.id } });
+  res.json({ ok: true });
+});
+
+app.listen(PORT, () => {
+  console.log(`everythingApp listening on port ${PORT}`);
+});
