@@ -3,31 +3,70 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Life Board</title>
+  <title>Everything App</title>
   <link rel="stylesheet" href="/app.css" />
 </head>
 <body>
-  <header class="bar">
-    <strong>Life Board</strong>
-    <select id="view">
-      <option value="">All</option>
-      <option value="EVENT">Calendar</option>
-      <option value="IDEA">Ideas</option>
-      <option value="WORKOUT">Workouts</option>
-      <option value="CALORIE">Calories</option>
-    </select>
-    <input id="tag" placeholder="tag: bike/school/code" />
-    <input id="q" placeholder="search…" />
-    <button id="new">New</button>
-    <div class="spacer"></div>
-  </header>
+  <nav class="topnav">
+    <button data-page="board" class="active">Board</button>
+    <button data-page="workouts">Workouts</button>
+    <button data-page="bike">Bike</button>
+  </nav>
 
-  <main id="grid" class="grid"></main>
+  <main>
+    <section id="board" class="page">
+      <div class="columns">
+        <div class="col" id="ideasCol">
+          <h2>Ideas & Events</h2>
+          <ul id="ideasList" class="list"></ul>
+          <div class="actions">
+            <button id="newIdea">New</button>
+            <button id="clearIdeas" class="ghost">Remove crossed</button>
+          </div>
+        </div>
+        <div class="col" id="classesCol">
+          <h2>Classes</h2>
+          <div class="class" data-class="Senior Seminar">
+            <h3>Senior Seminar</h3>
+            <ul class="list"></ul>
+            <div class="actions"><input placeholder="New task" /><button class="add">Add</button></div>
+          </div>
+          <div class="class" data-class="ClientSide">
+            <h3>ClientSide</h3>
+            <ul class="list"></ul>
+            <div class="actions"><input placeholder="New task" /><button class="add">Add</button></div>
+          </div>
+          <div class="class" data-class="CIS Audit">
+            <h3>CIS Audit</h3>
+            <ul class="list"></ul>
+            <div class="actions"><input placeholder="New task" /><button class="add">Add</button></div>
+          </div>
+          <div class="class" data-class="Managing Security">
+            <h3>Managing Security</h3>
+            <ul class="list"></ul>
+            <div class="actions"><input placeholder="New task" /><button class="add">Add</button></div>
+          </div>
+          <button id="clearClasses" class="ghost">Remove crossed</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="workouts" class="page" hidden>
+      <h2>Workouts</h2>
+      <ul id="workoutList" class="list"></ul>
+      <button id="newWorkout">Add Workout</button>
+    </section>
+
+    <section id="bike" class="page" hidden>
+      <h2>Bike Board</h2>
+      <ul id="bikeList" class="list"></ul>
+      <button id="newBike">Add Bike Item</button>
+    </section>
+  </main>
 
   <section id="modal" class="card" hidden>
     <select id="type">
-      <option>EVENT</option><option>IDEA</option>
-      <option>WORKOUT</option><option>CALORIE</option>
+      <option>IDEA</option><option>EVENT</option><option>WORKOUT</option>
     </select>
     <input id="title" placeholder="Title" />
     <textarea id="data" placeholder='JSON data (optional)'></textarea>
