@@ -59,7 +59,17 @@ app.get("/api/items", async (req, res) => {
 
 app.post("/api/items", requireAdmin, async (req, res) => {
   const { type, title, data = {}, tags = [], when = null } = req.body;
-  const created = await prisma.item.create({ data: { type, title, data, tags, when } });
+
+  const created = await prisma.item.create({
+    data: {
+      type,
+      title,
+      data,
+      tags,
+      when: when ? new Date(when) : null
+    }
+  });
+
   res.json(created);
 });
 
